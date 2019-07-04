@@ -55,16 +55,6 @@ video_dim = set_resolution(cap, video_res)
 video_code_type = get_video_type(video_name)
 video_writer = cv2.VideoWriter(video_dir, video_code_type, frames_per_second, video_dim)
 
-# mouse callback function
-def draw_circle(event, x , y, flags, param):
-    if event == cv2.EVENT_LBUTTONDBLCLK:
-        cv2.circle(img, (x, y), 100, (255, 0, 0), -1)
-
-# Create a black image, a window and bind the function to window
-img = np.zeros((100, 100, 3), np.uint8)
-cv2.namedWindow('video_window')
-cv2.setMouseCallback('video_window', draw_circle)
-
 face_cascade = cv2.CascadeClassifier('./haarcascade/haarcascade_frontalface_alt2.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('recognize.yml')
